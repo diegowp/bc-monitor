@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+
+  "name": "BC Monitor",
+  "version": "0.1",
+  "description": "Cotação Bitcoin em tempo real - Versão BETA",
+
+  "permissions": [
+    "<all_urls>",
+    "http://*/*",
+    "https://*/*",
+    "storage",
+    "notifications",
+    "activeTab",
+    "tabs"
+  ],
+
+  "icons": {
+    "48": "icons/btc-icon-48.png",
+    "96": "icons/btc-icon-96.png"
+  },
+
+  "background":{
+    "scripts":[
+      "background/bc-monitor.js"
+    ]
+  },
+
+  "content_scripts": [{
+    "matches": ["*://*/*"],
+    "js": ["content_scripts/bc-monitor.js"]
+  }],
+
+  "browser_action": {
+    "default_icon": "icons/btc-icon-48.png",
+    "default_popup": "popup/bc-monitor.html"
+  }
+
+}
