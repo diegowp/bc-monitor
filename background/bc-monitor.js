@@ -48,14 +48,23 @@ var App = App || {};
             // console.log( "Valor de Compra ( R$ ) = " + valBR.toFixed(2) );
             // console.log( "Valor de Venda ( R$ ) = " + val_btc_br.toFixed(2) );
 
-            // chrome.notifications.create("bcm",{
-            //     "type": "basic",
-            //     "iconUrl": "http://localhost:8888/teste_ext/icons/btc-icon-48.svg",
-            //     "title": "BC Monitor - O Preço baixou!!",
-            //     "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$" + valBR.toFixed(2)
-            // });
-            //
-            // chrome.notifications.clear("bcm");
+            chrome.storage.sync.get(function( items ){
+
+                console.log( parseInt( items.btc_value ) <= parseInt( valBR ) );
+                if( parseInt( items.btc_value ) <= parseInt( valBR ) ){
+
+                    chrome.notifications.create("bcm",{
+                        "type": "basic",
+                        "iconUrl": "http://localhost:8888/teste_ext/icons/btc-icon-48.svg",
+                        "title": "BC Monitor - O Preço baixou!!",
+                        "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$" + valBR.toFixed(2)
+                    });
+
+                    chrome.notifications.clear("bcm");
+
+                }
+
+            });
 
             var send_to_popup = [];
             send_to_popup["valBTC"]      = valBTC.toFixed(2);

@@ -1,0 +1,24 @@
+input,
+button,
+div.status{
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+button{
+    background-color: forestgreen;
+    color: #FFF;
+}
+
+div.status{
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+    color: #FFF;
+    background-color: #299f5d;
+    text-align: left;
+}
