@@ -38,6 +38,10 @@
 
   "options_ui": {
     "page": "options/options.html"
-  }
+  },
+
+  "web_accessible_resources":[
+    "icons/btc-icon-48.svg"
+  ]
 
 }

@@ -50,24 +50,16 @@ var App = App || {};
 
             chrome.storage.sync.get(function( items ){
 
-                console.log( parseInt( items.btc_value ) + " /// " + parseInt( valBR ) );
-
                 if(  parseInt( valBR ) <= parseInt( items.btc_value ) ){
 
                     chrome.notifications.create("bcm",{
                         "type": "basic",
-                        "iconUrl": "http://localhost:8888/teste_ext/icons/btc-icon-48.svg",
+                        "iconUrl": "chrome-extension://jdddepmigkoahgpnpnmgghambfbeifga/icons/btc-icon-48.svg",
                         "title": "BC Monitor - O Preço baixou!!",
                         "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$ " + valBR.toFixed(2)
                     });
 
-                }
-
-                if( parseInt( valBR ) < parseInt( items.btc_value ) ){
-
-                    chrome.notifications.update( "bcm", {
-                        "message": "Opa, o preço baixou mais! Bora comprar Bitcoin! \n Valor Atual: R$ " + valBR.toFixed(2)
-                    });
+                    chrome.notifications.clear("bcm");
 
                 }
 
