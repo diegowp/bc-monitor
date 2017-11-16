@@ -34,8 +34,8 @@ var App = App || {};
 
             var self = App.main;
 
-            var response_dolar  = self.callAPI( "GET", "https://api.coindesk.com/v1/bpi/currentprice.json", false ),
-                response_real   = self.callAPI( "GET", "https://api.blinktrade.com/api/v1/BRL/ticker?crypto_currency=BTC", false ),
+            var response_dolar  = self.callAPI( "GET", "https://api.coindesk.com/v1/bpi/currentprice.json?nocache=true", false ),
+                response_real   = self.callAPI( "GET", "https://api.blinktrade.com/api/v1/BRL/ticker?crypto_currency=BTC&nocache=true", false ),
 
                 parse_dolar     = JSON.parse( response_dolar ),
                 parse_real      = JSON.parse( response_real ),
@@ -100,11 +100,12 @@ var App = App || {};
 
             var self = App.main;
 
+            self.callBC();
             self.sendToUser();
 
             setInterval(function(){
                 self.callBC();
-            },60000);
+            },30000);
 
         }
 
