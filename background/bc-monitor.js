@@ -74,21 +74,28 @@ var App = App || {};
 
         },
 
-        sendToUser: function(){
+        sendToUser: function( call ){
 
             var self = App.main;
 
-            var get_values = self.callBC();
+            var get_values = self.callBC(),
+                sendValues = {
+                    valBTC: get_values["valBTC"],
+                    valBR: get_values["valBR"],
+                    val_btc_br: get_values["val_btc_br"]
+                };
+
+            if( call === "refresh" ){
+
+                chrome.runtime.sendMessage( sendValues, function( response ){});
+
+            }
 
             chrome.runtime.onMessage.addListener( function( request, sender, sendresponse ){
 
                 if( request.message === "get" ){
 
-                    sendresponse({
-                        valBTC: get_values["valBTC"],
-                        valBR: get_values["valBR"],
-                        val_btc_br: get_values["val_btc_br"]
-                    });
+                    sendresponse( sendValues );
 
                 }
 
@@ -104,7 +111,7 @@ var App = App || {};
             self.sendToUser();
 
             setInterval(function(){
-                self.callBC();
+                self.sendToUser( "refresh" );
             },30000);
 
         }

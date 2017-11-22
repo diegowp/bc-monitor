@@ -18,21 +18,19 @@ var App = App || {};
             var field_2 = this.bc_buy;
             var field_3 = this.bc_sell;
 
-            chrome.runtime.sendMessage( {message: "get"}, function( response ){
+            var fillFields = function( response ) {
 
-                /*
-                @Response({
-                    valBTC: valBTC,
-                    valBR: valBR,
-                    val_btc_br: val_btc_br
-                });
-                */
+                console.log( response );
 
                 field_1.innerHTML = "Valor em Dólar  = USD " + response.valBTC;
                 field_2.innerHTML = "Valor de compra =  R$ " + response.valBR;
                 field_3.innerHTML = "Valor de venda  =  R$ " + response.val_btc_br;
 
-            });
+            };
+
+            chrome.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
+
+            chrome.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) });
 
         },
 
