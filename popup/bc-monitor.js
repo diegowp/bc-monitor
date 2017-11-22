@@ -20,8 +20,6 @@ var App = App || {};
 
             var fillFields = function( response ) {
 
-                console.log( response );
-
                 field_1.innerHTML = "Valor em Dólar  = USD " + response.valBTC;
                 field_2.innerHTML = "Valor de compra =  R$ " + response.valBR;
                 field_3.innerHTML = "Valor de venda  =  R$ " + response.val_btc_br;
@@ -34,12 +32,25 @@ var App = App || {};
 
         },
 
+        generics: function(){
+
+            var linkOptions = document.querySelector("a#options");
+
+            linkOptions.onclick = function(){
+
+                chrome.tabs.update( {url: "chrome://extensions/?options=jdddepmigkoahgpnpnmgghambfbeifga"} );
+
+            };
+
+        },
+
         init: function(){
 
             var self = App.popup;
 
             self.cache();
             self.callValues();
+            self.generics();
 
         }
 

@@ -11,9 +11,8 @@ var App = App || {};
 
             http.onreadystatechange = function(){
 
-                if( this.status === 200 && this.readyState === 4 ){
+                if( this.status === 200 && this.readyState === 4 )
                     response = this.responseText;
-                }
 
                 if( this.status === 400 || this.status === 404 || this.status === 500 || this.status === 503 || this.status === 520 ){
                     response = "Ops! Os Macacos do Laboratório ficaram loucos =O !!";
@@ -43,10 +42,6 @@ var App = App || {};
                 valBTC          = parse_dolar.bpi.USD.rate_float,
                 valBR           = parse_real.buy,
                 val_btc_br      = parse_real.sell;
-
-            // console.log( "Valor Bitcoin ( USS ) = " + valBTC.toFixed(2) );
-            // console.log( "Valor de Compra ( R$ ) = " + valBR.toFixed(2) );
-            // console.log( "Valor de Venda ( R$ ) = " + val_btc_br.toFixed(2) );
 
             chrome.storage.sync.get(function( items ){
 
@@ -85,19 +80,13 @@ var App = App || {};
                     val_btc_br: get_values["val_btc_br"]
                 };
 
-            if( call === "refresh" ){
-
+            if( call === "refresh" )
                 chrome.runtime.sendMessage( sendValues, function( response ){});
-
-            }
 
             chrome.runtime.onMessage.addListener( function( request, sender, sendresponse ){
 
-                if( request.message === "get" ){
-
+                if( request.message === "get" )
                     sendresponse( sendValues );
-
-                }
 
             });
 
