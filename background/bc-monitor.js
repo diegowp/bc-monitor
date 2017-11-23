@@ -47,14 +47,23 @@ var App = App || {};
 
                 if(  parseInt( valBR ) <= parseInt( items.btc_value ) ){
 
-                    chrome.notifications.create("bcm",{
-                        "type": "basic",
-                        "iconUrl": "chrome-extension://jdddepmigkoahgpnpnmgghambfbeifga/icons/btc-icon-48.svg",
-                        "title": "BC Monitor - O Preço baixou!!",
-                        "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$ " + valBR.toFixed(2)
-                    });
+                    if( !items.show_notification || parseInt( valBR ) < parseInt( items.current_value ) ){
 
-                    chrome.notifications.clear("bcm");
+                        chrome.notifications.create("bcm",{
+                            "type": "basic",
+                            "iconUrl": chrome.extension.getURL( "icons/btc-icon-48.svg" ),
+                            "title": "BC Monitor - O Preço baixou!!",
+                            "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$ " + valBR.toFixed(2)
+                        });
+
+                        chrome.notifications.clear("bcm");
+
+                        chrome.storage.sync.set({
+                            show_notification: true,
+                            current_value: valBR.toFixed(2)
+                        }, function(){});
+
+                    }
 
                 }
 
@@ -95,6 +104,10 @@ var App = App || {};
         init: function(){
 
             var self = App.main;
+
+            chrome.storage.sync.set({
+                show_notification: false,
+            }, function(){});
 
             self.callBC();
             self.sendToUser();
