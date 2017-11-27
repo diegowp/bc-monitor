@@ -17,33 +17,33 @@
   ],
 
   "icons": {
-    "48": "icons/btc-icon-48.png",
-    "96": "icons/btc-icon-96.png",
-    "128": "icons/btc-icon-128.png"
+    "48": "dist/icons/btc-icon-48.png",
+    "96": "dist/icons/btc-icon-96.png",
+    "128": "dist/icons/btc-icon-128.png"
   },
 
   "background":{
     "scripts":[
-      "background/bc-monitor.js"
+      "dist/background/bc-monitor-background.js"
     ]
   },
 
   "content_scripts": [{
     "matches": ["*://*/*"],
-    "js": ["content_scripts/bc-monitor.js"]
+    "js": ["dist/content_scripts/bc-monitor-content.js"]
   }],
 
   "browser_action": {
-    "default_icon": "icons/btc-icon-48.png",
-    "default_popup": "popup/bc-monitor.html"
+    "default_icon": "dist/icons/btc-icon-48.png",
+    "default_popup": "dist/popup/bc-monitor.html"
   },
 
   "options_ui": {
-    "page": "options/options.html"
+    "page": "dist/options/options.html"
   },
 
   "web_accessible_resources":[
-    "icons/btc-icon-48.svg"
+    "dist/icons/btc-icon-48.svg"
   ]
 
 }

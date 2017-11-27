@@ -51,7 +51,7 @@ var App = App || {};
 
                         chrome.notifications.create("bcm",{
                             "type": "basic",
-                            "iconUrl": chrome.extension.getURL( "icons/btc-icon-48.svg" ),
+                            "iconUrl": chrome.extension.getURL( "dist/icons/btc-icon-48.svg" ),
                             "title": "BC Monitor - O Preço baixou!!",
                             "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$ " + valBR.toFixed(2)
                         });
