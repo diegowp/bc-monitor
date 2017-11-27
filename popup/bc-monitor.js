@@ -38,7 +38,7 @@ var App = App || {};
 
             linkOptions.onclick = function(){
 
-                chrome.tabs.update( {url: "chrome://extensions/?options=jdddepmigkoahgpnpnmgghambfbeifga"} );
+                chrome.tabs.update( {url: "chrome://extensions/?options=" + chrome.app.getDetails().id} );
 
             };
 
