@@ -43,7 +43,29 @@ var App = App || {};
                 valBR           = parse_real.buy,
                 val_btc_br      = parse_real.sell;
 
+            chrome.storage.sync.set({
+                high: parse_real.high.toFixed(2),
+                low: parse_real.low.toFixed(2)
+            }, function(){});
+
             chrome.storage.sync.get(function( items ){
+
+                if( parseInt( valBR ) > parseInt( items.high ) ){
+
+                    chrome.notifications.create("bcm",{
+                        "type": "basic",
+                        "iconUrl": chrome.extension.getURL( "dist/icons/btc-icon-48.svg" ),
+                        "title": "BC Monitor - AO INFINITO E ALÉMM!!!",
+                        "message": "Valor Atual: R$ " + valBR.toFixed(2)
+                    });
+
+                    chrome.notifications.clear("bcm");
+
+                    chrome.storage.sync.set({
+                        show_notification: true,
+                    }, function(){});
+
+                }
 
                 if(  parseInt( valBR ) <= parseInt( items.btc_value ) ){
 
