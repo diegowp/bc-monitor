@@ -43,26 +43,28 @@ var App = App || {};
                 valBR           = parse_real.buy,
                 val_btc_br      = parse_real.sell;
 
-            chrome.storage.sync.set({
+            self.browser.storage.sync.set({
                 high: parse_real.high.toFixed(2),
                 low: parse_real.low.toFixed(2)
             }, function(){});
 
-            chrome.storage.sync.get(function( items ){
+            self.browser.storage.sync.get(function( items ){
 
                 if( parseInt( valBR ) > parseInt( items.high ) ){
 
-                    chrome.notifications.create("bcm",{
+                    self.browser.notifications.create("bcm",{
                         "type": "basic",
-                        "iconUrl": chrome.extension.getURL( "dist/icons/btc-icon-48.svg" ),
+                        "iconUrl": self.browser.extension.getURL( "dist/icons/btc-icon-48.svg" ),
                         "title": "BC Monitor - AO INFINITO E ALÉMM!!!",
                         "message": "Valor Atual: R$ " + valBR.toFixed(2)
                     });
 
-                    chrome.notifications.clear("bcm");
+                    self.browser.notifications.clear("bcm");
 
-                    chrome.storage.sync.set({
+                    // Caso seja exibida a notificação e qual o valor atual em que a notificação foi exibida
+                    self.browser.storage.sync.set({
                         show_notification: true,
+                        current_value: valBR.toFixed(2)
                     }, function(){});
 
                 }
@@ -71,16 +73,17 @@ var App = App || {};
 
                     if( !items.show_notification || parseInt( valBR ) < parseInt( items.current_value ) ){
 
-                        chrome.notifications.create("bcm",{
+                        self.browser.notifications.create("bcm",{
                             "type": "basic",
-                            "iconUrl": chrome.extension.getURL( "dist/icons/btc-icon-48.svg" ),
+                            "iconUrl": self.browser.extension.getURL( "dist/icons/btc-icon-48.svg" ),
                             "title": "BC Monitor - O Preço baixou!!",
                             "message": "Bora comprar mais Bitocoins? \n Valor Atual: R$ " + valBR.toFixed(2)
                         });
 
-                        chrome.notifications.clear("bcm");
+                        self.browser.notifications.clear("bcm");
 
-                        chrome.storage.sync.set({
+                        // Caso seja exibida a notificação e qual o valor atual em que a notificação foi exibida
+                        self.browser.storage.sync.set({
                             show_notification: true,
                             current_value: valBR.toFixed(2)
                         }, function(){});
@@ -112,9 +115,9 @@ var App = App || {};
                 };
 
             if( call === "refresh" )
-                chrome.runtime.sendMessage( sendValues, function( response ){});
+                self.browser.runtime.sendMessage( sendValues, function( response ){});
 
-            chrome.runtime.onMessage.addListener( function( request, sender, sendresponse ){
+            self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){
 
                 if( request.message === "get" )
                     sendresponse( sendValues );
@@ -122,12 +125,20 @@ var App = App || {};
             });
 
         },
+        
+        cache: function(){
+            
+            this.browser = chrome || browser;
+            
+        },
 
         init: function(){
 
             var self = App.main;
 
-            chrome.storage.sync.set({
+            self.cache();
+
+            self.browser.storage.sync.set({
                 show_notification: false,
             }, function(){});
 

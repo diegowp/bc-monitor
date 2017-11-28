@@ -6,6 +6,7 @@ var App = App || {};
 
         cache: function(){
 
+            this.browser = chrome || browser;
             this.bc_val = document.getElementById("bc-val");
             this.bc_buy = document.getElementById("bc-buy-val");
             this.bc_sell = document.getElementById("bc-sell-val");
@@ -14,9 +15,10 @@ var App = App || {};
 
         callValues: function() {
 
-            var field_1 = this.bc_val;
-            var field_2 = this.bc_buy;
-            var field_3 = this.bc_sell;
+            var field_1 = this.bc_val,
+                field_2 = this.bc_buy,
+                field_3 = this.bc_sell,
+                self    = App.popup;
 
             var fillFields = function( response ) {
 
@@ -26,19 +28,20 @@ var App = App || {};
 
             };
 
-            chrome.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
+            self.browser.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
 
-            chrome.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) });
+            self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) });
 
         },
 
         generics: function(){
 
-            var linkOptions = document.querySelector("a#options");
+            var linkOptions = document.querySelector("a#options"),
+                self        = App.popup;
 
             linkOptions.onclick = function(){
 
-                chrome.tabs.update( {url: "chrome://extensions/?options=" + chrome.app.getDetails().id} );
+                self.browser.tabs.update( {url: "chrome://extensions/?options=" + self.browser.app.getDetails().id} );
 
             };
 

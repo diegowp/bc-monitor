@@ -8,10 +8,11 @@ var App = App || {};
 
             document.querySelector("button").addEventListener("click", function(e){
 
-                var value = document.getElementById("btc-value").value,
-                    status = document.querySelector("div.status");
+                var value   = document.getElementById("btc-value").value,
+                    status  = document.querySelector("div.status"),
+                    self    = App.options;
 
-                chrome.storage.sync.set({
+                self.browser.storage.sync.set({
                     btc_value: value
                 }, function(){
                     setTimeout(function(){
@@ -26,18 +27,26 @@ var App = App || {};
 
         load: function(){
 
-            var value = document.getElementById("btc-value");
+            var value   = document.getElementById("btc-value"),
+                self    = App.options;
 
-            chrome.storage.sync.get(function( items ){
+            self.browser.storage.sync.get(function( items ){
                 value.value = parseFloat( items.btc_value );
             });
 
+        },
+        
+        cache: function(){
+
+            this.browser = chrome || browser;
+            
         },
 
         init: function(){
 
             var self = App.options;
 
+            self.cache();
             self.load();
             self.save();
 
