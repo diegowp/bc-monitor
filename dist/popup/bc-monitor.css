@@ -165,5 +165,10 @@ small {
       box-sizing: border-box; }
       .bc-main-wrapper ul li:last-child {
         border: none; }
+      .bc-main-wrapper ul li span.list-title {
+        border-bottom: 1px solid #CCC;
+        padding: 5px 0;
+        display: block;
+        line-height: 20px; }
 
 /*# sourceMappingURL=bc-monitor.css.map */

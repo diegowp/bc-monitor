@@ -137,6 +137,13 @@ small{
       &:last-child{
         border: none;
       }
+
+      span.list-title {
+        border-bottom: 1px solid #CCC;
+        padding: 5px 0;
+        display: block;
+        line-height: 20px;
+      }
     }
   }
 
