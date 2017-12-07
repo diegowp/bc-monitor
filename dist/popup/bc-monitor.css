@@ -1,51 +1,169 @@
-*{
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.bc-main-wrapper{
-    width: 300px;
-    height: auto;
+@charset "UTF-8";
+/*
+*  html5 doctor css reset | http://html5doctor.com/html-5-reset-stylesheet
+*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+/*
+** Variáveis
+*/
+/*
+** Mixins
+*/
+/*
+** Tipografia
+*/
+body {
+  font-family: Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #6897bb; }
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #6897bb; }
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6897bb; }
+
+h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #6897bb; }
+
+h5 {
+  font-size: 10px;
+  font-weight: 700;
+  color: #6897bb; }
+
+h6 {
+  font-size: 6px;
+  font-weight: 700;
+  color: #6897bb; }
+
+p, span {
+  font-size: 14px;
+  color: #666666; }
+
+a {
+  font-size: 14px;
+  color: #6897bb; }
+  a:hover {
+    text-decoration: none; }
+
+small {
+  font-size: 10px;
+  color: #666666; }
+
+/*
+** Área do popup
+*/
+.bc-main-wrapper {
+  width: 300px;
+  height: auto;
+  display: block;
+  padding: 15px; }
+  .bc-main-wrapper h3 {
+    clear: both; }
+  .bc-main-wrapper a#options {
+    width: 20px;
+    height: 20px;
     display: block;
-    padding: 15px;
-    font-family: Arial, sans-serif;
-}
-.bc-main-wrapper h3{
-    color: #666;
-    clear: both;
-}
-.bc-main-wrapper a#options {
-    display: block;
-    text-decoration: none;
-    color: #FFF;
-    padding: 10px 15px;
-    background-color: #008ac1;
     font-weight: bold;
     letter-spacing: 1px;
-    float: left;
+    float: right;
     clear: both;
-    margin: 10px 0;
-}
-.bc-main-wrapper ul{
-    margin: 10px 0;
-    padding-left: 0;
-    clear: both;
-}
-.bc-main-wrapper ul li{
+    margin: 10px 0; }
+  .bc-main-wrapper ul {
     width: 100%;
     display: block;
-    margin-bottom: 5px;
-    padding: 15px;
-    background-color: #f7f7f7;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 2px 2px 1px #CCC;
-    -moz-box-shadow: 2px 2px 1px #CCC;
-    box-shadow: 2px 2px 1px #CCC;
-}
-.bc-main-wrapper ul li:last-child{
-    border: none;
-}
+    margin: 10px 0;
+    padding-left: 0;
+    overflow: hidden; }
+    .bc-main-wrapper ul li {
+      width: calc( 100% / 2 - 10px);
+      display: block;
+      float: left;
+      margin: 5px;
+      padding: 15px;
+      text-align: center;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 2px 2px 5px #CCCCCC;
+      -moz-box-shadow: 2px 2px 5px #CCCCCC;
+      box-shadow: 2px 2px 5px #CCCCCC;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      .bc-main-wrapper ul li:last-child {
+        border: none; }
+
+/*# sourceMappingURL=bc-monitor.css.map */

@@ -10,6 +10,7 @@ var App = App || {};
             this.bc_val = document.getElementById("bc-val");
             this.bc_buy = document.getElementById("bc-buy-val");
             this.bc_sell = document.getElementById("bc-sell-val");
+            this.bc_max = document.getElementById("bc-max");
 
         },
 
@@ -18,13 +19,15 @@ var App = App || {};
             var field_1 = this.bc_val,
                 field_2 = this.bc_buy,
                 field_3 = this.bc_sell,
+                field_4 = this.bc_max,
                 self    = App.popup;
 
-            var fillFields = function( response ) {
+            var fillFields = function( values ){
 
-                field_1.innerHTML = "Valor em Dólar  = USD " + response.valBTC;
-                field_2.innerHTML = "Valor de compra =  R$ " + response.valBR;
-                field_3.innerHTML = "Valor de venda  =  R$ " + response.val_btc_br;
+                field_4.innerHTML = "<span class='list-title'>Alta R$</span> <br>" + values.valMax;
+                field_1.innerHTML = "<span class='list-title'>Valor US</span> <br>" + values.valBTC;
+                field_2.innerHTML = "<span class='list-title'>Compra R$</span> <br>" + values.valBR;
+                field_3.innerHTML = "<span class='list-title'>Venda R$</span> <br>" + values.valSell;
 
             };
 

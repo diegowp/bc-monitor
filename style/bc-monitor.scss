@@ -1,0 +1,143 @@
+/*
+*  html5 doctor css reset | http://html5doctor.com/html-5-reset-stylesheet
+*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+
+/*
+** Variáveis
+*/
+$title_color_default: #6897bb;
+$text_color_default: #666666;
+$gray_default: #CCCCCC;
+$gray_light: lighten( $gray_default, 15% );
+$gray_strong: darken( $gray_default, 15% );
+
+/*
+** Mixins
+*/
+
+@mixin border_radius( $radius: 5px ){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box_shadow( $shadow: 2px 2px 5px $gray_default ){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin box_sizing( $box_sizing: border-box ){
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+** Tipografia
+*/
+
+body{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+$default-size: 26px;
+@for $i from 1 through 6{
+
+  @if $i > 1{
+    $default-size: ( $default-size - 4 );
+  }
+
+  h#{$i}{
+    font-size: $default-size;
+    font-weight: 700;
+    color: $title_color_default;
+  }
+
+}
+
+p, span{
+  font-size: 14px;
+  color: $text_color_default;
+}
+
+a{
+  font-size: 14px;
+  color: $title_color_default;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+small{
+  font-size: 10px;
+  color: $text_color_default;
+}
+
+
+/*
+** Área do popup
+*/
+
+.bc-main-wrapper{
+  width: 300px;
+  height: auto;
+  display: block;
+  padding: 15px;
+
+  h3{
+    clear: both;
+  }
+
+  a#options{
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 1px;
+    float: right;
+    clear: both;
+    margin: 10px 0;
+  }
+
+  ul{
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    padding-left: 0;
+    overflow: hidden;
+
+    li{
+      width: calc( 100% / 2 - 10px );
+      display: block;
+      float: left;
+      margin: 5px;
+      padding: 15px;
+      text-align: center;
+      @include border_radius();
+      @include box_shadow();
+      @include box_sizing();
+
+      &:last-child{
+        border: none;
+      }
+    }
+  }
+
+}
