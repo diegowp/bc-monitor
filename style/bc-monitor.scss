@@ -102,23 +102,24 @@ small{
   padding: 15px;
 
   h3{
-    clear: both;
+    width: 80%;
+    float: left;
   }
 
   a#options{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     display: block;
     font-weight: bold;
     letter-spacing: 1px;
     float: right;
-    clear: both;
     margin: 10px 0;
+    outline: none;
   }
 
   ul{
     width: 100%;
-    display: block;
+    display: inline-block;
     margin: 10px 0;
     padding-left: 0;
     overflow: hidden;
@@ -130,19 +131,18 @@ small{
       margin: 5px;
       padding: 15px;
       text-align: center;
-      @include border_radius();
-      @include box_shadow();
+      border: 1px solid #e9ecef;
+      @include border_radius( 2px );
       @include box_sizing();
 
-      &:last-child{
-        border: none;
-      }
-
       span.list-title {
-        border-bottom: 1px solid #CCC;
         padding: 5px 0;
         display: block;
         line-height: 20px;
+        background-color: $title_color_default;
+        color: #FFF;
+        letter-spacing: 1px;
+        @include border_radius( 2px );
       }
     }
   }

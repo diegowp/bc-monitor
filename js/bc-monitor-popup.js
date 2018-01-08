@@ -31,9 +31,13 @@ var App = App || {};
 
             };
 
-            self.browser.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
+            setTimeout(function(){
+                self.browser.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
+            }, 300);
 
-            self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) });
+            setTimeout(function(){
+                self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) })
+            }, 300);
 
         },
 

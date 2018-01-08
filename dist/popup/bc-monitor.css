@@ -131,19 +131,20 @@ small {
   display: block;
   padding: 15px; }
   .bc-main-wrapper h3 {
-    clear: both; }
+    width: 80%;
+    float: left; }
   .bc-main-wrapper a#options {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     display: block;
     font-weight: bold;
     letter-spacing: 1px;
     float: right;
-    clear: both;
-    margin: 10px 0; }
+    margin: 10px 0;
+    outline: none; }
   .bc-main-wrapper ul {
     width: 100%;
-    display: block;
+    display: inline-block;
     margin: 10px 0;
     padding-left: 0;
     overflow: hidden; }
@@ -154,21 +155,22 @@ small {
       margin: 5px;
       padding: 15px;
       text-align: center;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      -webkit-box-shadow: 2px 2px 5px #CCCCCC;
-      -moz-box-shadow: 2px 2px 5px #CCCCCC;
-      box-shadow: 2px 2px 5px #CCCCCC;
+      border: 1px solid #e9ecef;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box; }
-      .bc-main-wrapper ul li:last-child {
-        border: none; }
       .bc-main-wrapper ul li span.list-title {
-        border-bottom: 1px solid #CCC;
         padding: 5px 0;
         display: block;
-        line-height: 20px; }
+        line-height: 20px;
+        background-color: #6897bb;
+        color: #FFF;
+        letter-spacing: 1px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px; }
 
 /*# sourceMappingURL=bc-monitor.css.map */
