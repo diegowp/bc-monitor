@@ -119,8 +119,9 @@ var App = App || {};
 
             self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){
 
-                if( request.message === "get" )
+                if( request.message === "get" ) {
                     sendresponse( sendValues );
+                }
 
             });
 

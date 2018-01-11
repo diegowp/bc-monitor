@@ -22,22 +22,33 @@ var App = App || {};
                 field_4 = this.bc_max,
                 self    = App.popup;
 
-            var fillFields = function( values ){
+            var fillFields = function( values, type ){
 
-                field_4.innerHTML = "<span class='list-title'>Alta R$</span> <br>" + values.valMax;
-                field_1.innerHTML = "<span class='list-title'>Valor US</span> <br>" + values.valBTC;
-                field_2.innerHTML = "<span class='list-title'>Compra R$</span> <br>" + values.valBR;
-                field_3.innerHTML = "<span class='list-title'>Venda R$</span> <br>" + values.valSell;
+                var valMax, valBTC, valBR, valSell;
+
+                if( type === "get" ){
+                    valMax  = values.valMax;
+                    valBTC  = values.valBTC;
+                    valBR   = values.valBR;
+                    valSell = values.valSell;
+                }else if( type === "new" ){
+                    valMax  = values.high;
+                    valBTC  = values.dolar;
+                    valBR   = values.buy;
+                    valSell = values.sell;
+                }
+                field_4.innerHTML = "<span class='list-title'>Alta R$</span> <br>" + valMax;
+                field_1.innerHTML = "<span class='list-title'>Valor US</span> <br>" + valBTC;
+                field_2.innerHTML = "<span class='list-title'>Compra R$</span> <br>" + valBR;
+                field_3.innerHTML = "<span class='list-title'>Venda R$</span> <br>" + valSell;
 
             };
 
-            setTimeout(function(){
-                self.browser.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response ) });
-            }, 300);
+            self.browser.runtime.sendMessage( {message: "get"}, function( response ){ fillFields( response, "get" ) });
 
-            setTimeout(function(){
-                self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request ) })
-            }, 300);
+            self.browser.runtime.onMessage.addListener( function( request, sender, sendresponse ){ fillFields( request, "get" ); })
+
+            setTimeout(function(){ self.browser.storage.sync.get( function( values ){ fillFields( values, "new" ) } ) }, 300);
 
         },
 
